@@ -91,6 +91,10 @@ class GaleryController extends Controller
      */
     public function update(Request $request, Galery $galery)
     {
+        $val = $request->validate([
+            'judul'=>'required',
+            'deskripsi'=>'required',
+        ]);
         if($request->hasFile('photo')){
             $filePath=Storage::disk('public')->put('image/post/',request()->file('photo'));
             $galery->judul=$request->judul;
